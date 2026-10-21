@@ -21,5 +21,5 @@ def test_cleaning_the_cart(driver_fix):
 
     """проверка, что товаров стало 0"""
     count_items = cp.get_cart_items_count()
-    assert count_items == 0
+    assert count_items == 0, f"ожидалась пустая корзина, но осталось {count_items} товаров"
     print("в корзине нет товаров")

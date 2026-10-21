@@ -1,47 +1,40 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from locators.locators import user_name, password, login_button, error_mes
 
 class LoginPage:
 
     def __init__(self, driver):
         self.driver = driver
 
-    # локаторы
+        self.standard_user_name = "standard_user"
+        self.standard_password = "secret_sauce"
 
-    user_name = '//input[@id="user-name"]'
-    password = '//input[@id="password"]'
-    login_button = '//input[@id="login-button"]'
-
-    standard_user_name = "standard_user"
-    standard_password = "secret_sauce"
-
-    wrong_username = "wrong_user"
-    wrong_password = "wrong_password"
-
-    error_mes = '//h3[@data-test="error"]'
+        self.wrong_username = "wrong_user"
+        self.wrong_password = "wrong_password"
 
     # гетеры
     def get_user_name(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.user_name)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, user_name)))
 
     def get_password(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.password)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, password)))
 
     def get_login_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.login_button)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, login_button)))
 
     def error_message(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.error_mes))).text
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, error_mes))).text
 
     # действия
 
-    def input_username(self, standard_user_name):
-        self.get_user_name().send_keys(standard_user_name)
+    def input_username(self, username_text):
+        self.get_user_name().send_keys(username_text)
         print("input username")
 
-    def input_password(self, standard_password):
-        self.get_password().send_keys(standard_password)
+    def input_password(self, pwd_text):
+        self.get_password().send_keys(pwd_text)
         print("input password")
 
     def input_wrong_username(self, wrong_username):

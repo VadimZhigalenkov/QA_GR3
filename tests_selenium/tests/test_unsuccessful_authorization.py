@@ -12,5 +12,6 @@ def test_unsuccessful_authorization(driver_fix):
 
     """проверка сообщения об ошибке"""
     actual_text_error = lp.error_message()
-    assert 'Username and password do not match any user in this service' in actual_text_error
+    assert 'Username and password do not match any user in this service' in actual_text_error, \
+        "не появилось сообщение об ошибке авторизации"
     print("Username and password do not match any user in this service")

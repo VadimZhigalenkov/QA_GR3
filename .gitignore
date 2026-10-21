@@ -1,7 +1,7 @@
 # PyCharm settings
 .idea/
 
-# Python cache
+# Python cacheg
 __pycache__/
 *.py[cod]
 

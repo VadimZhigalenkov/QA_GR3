@@ -1,25 +1,19 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from locators.locators import cart_checkout_button, remove_button, cart_item
 
 class CartPage:
 
     def __init__(self, driver):
         self.driver = driver
 
-    # локаторы
-    cart_checkout_button = '//button[@id="checkout"]'
-    remove_button = '//button[@data-test="remove-sauce-labs-backpack"]'
-    cart_item = '//div[@class="cart_item"]'
 
     # гетеры
     def get_checkout_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cart_checkout_button)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, cart_checkout_button)))
     def get_remove_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.remove_button)))
-    def price_in_cart(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.remove_button)))
-
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, remove_button)))
 
     #действия
     def click_checkout_button(self):
@@ -36,5 +30,5 @@ class CartPage:
         self.click_remove_button()
 
     def get_cart_items_count(self):
-        items = self.driver.find_elements(By.XPATH, self.cart_item)
+        items = self.driver.find_elements(By.XPATH, cart_item)
         return len(items)

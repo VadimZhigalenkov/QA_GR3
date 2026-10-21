@@ -25,5 +25,5 @@ def test_successful_purchase(driver_fix):
 
     """проверка финального текста"""
     actual_text = ci.get_success_text()
-    assert 'Thank you for your order' in actual_text
+    assert 'Thank you for your order' in actual_text, "Нет сообщения об успешном заказе"
     print("Thank you for your order!")

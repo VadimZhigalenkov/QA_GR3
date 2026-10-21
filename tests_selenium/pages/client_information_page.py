@@ -2,21 +2,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from faker import Faker
+from locators.locators import first_name, last_name, postal_code, continue_button, finish_button, success_header
 
 class ClientInformationPage:
 
     def __init__(self, driver):
         self.driver = driver
-
-    # локаторы
-
-    first_name = '//input[@id="first-name"]'
-    last_name = '//input[@id="last-name"]'
-    postal_code = '//input[@id="postal-code"]'
-    continue_button = '//input[@id="continue"]'
-    finish_button = '//button[@data-test="finish"]'
-    success_header = '//h2[@data-test="complete-header"]'
-
 
     faker = Faker()
 
@@ -27,17 +18,17 @@ class ClientInformationPage:
     # гетеры
 
     def get_first_name(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.first_name)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, first_name)))
     def get_last_name(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.last_name)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, last_name)))
     def get_postal_code(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.postal_code)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, postal_code)))
     def get_continue_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.continue_button)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, continue_button)))
     def get_finish_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.finish_button)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, finish_button)))
     def get_success_header(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.success_header)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, success_header)))
     def get_success_text(self):
         return self.get_success_header().text
 
