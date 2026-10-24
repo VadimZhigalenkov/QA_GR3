@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,10 +19,12 @@ class MainPage:
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, cart)))
 
     # действия
-
+    @allure.step("Добавление товара в корзину")
     def click_select_product(self): # обавляем в корзину
         self.select_product().click()
         print("сlick product 1")
+
+    @allure.step("Переход в корзину")
     def click_to_cart(self): # кликаем на корзину
         self.get_cart().click()
         print("сlick to cart")
