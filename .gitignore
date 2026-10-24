@@ -1,0 +1,15 @@
+# PyCharm settings
+.idea/
+
+# Python cacheg
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+
+# Pytest cache
+.pytest_cache/
+
+allure-results/
+allure-report/
