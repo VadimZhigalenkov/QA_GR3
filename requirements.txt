@@ -2,3 +2,4 @@ pytest
 selenium
 faker
 pytest-html
+allure-pytest

@@ -20,8 +20,8 @@ class CartPage:
         self.get_checkout_button().click()
         print("click checkout button")
     def click_remove_button(self):
+        WebDriverWait(self.driver, 30).until(EC.url_contains("cart.html"))
         self.get_remove_button().click()
-        print("click remove button")
 
     # методы
     def product_confirmation(self):
